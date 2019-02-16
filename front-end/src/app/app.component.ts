@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'front-end';
+  title = 'Bem vindo ao sistema Gerenciador de Pessoas e Dependentes';
 }

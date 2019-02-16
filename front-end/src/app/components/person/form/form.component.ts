@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonFormComponent implements OnInit {
 
+  title:string = "Cadastrar Pessoa";
+
   constructor() { }
 
   ngOnInit() {

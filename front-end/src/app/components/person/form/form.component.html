@@ -1,3 +1,39 @@
-<p>
-  form works!
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{ title }}
+  </div>
+  <div class="panel-body">
+    <form>
+      <div class="form-group">
+        <label class="col-md-4">Nome</label>
+        <input type="text" class="form-control" name="pessoa-nome" />
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-md-4">E-mail</label>
+        <input type="text" class="form-control" name="pessoa-email" />
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Data nascimento</label>
+        <input type="date" class="form-control" name="pessoa-dt-nascimento" />
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Dependente de:</label>
+        <select class="form-control" name="pessoa-dependente">
+          <option></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
