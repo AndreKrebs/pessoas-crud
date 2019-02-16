@@ -1,18 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { IndexComponent } from './index/index.component';
-import { FormComponent } from './form/form.component';
+import { appRoutes } from './routerConfig'
+
+import { PersonIndexComponent } from './components/person/index/index.component';
+import { PersonFormComponent } from './components/person/form/form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
-    FormComponent
+    PersonIndexComponent,
+    PersonFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
