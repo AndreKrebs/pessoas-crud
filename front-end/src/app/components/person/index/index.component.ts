@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RestService } from '../../../services/rest/rest.service'
+import { Observable, of } from 'rxjs';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonIndexComponent implements OnInit {
 
-  constructor() { }
+  title:string = "Pessoas Cadastradas";
+
+  peoples:any = [];
+
+  constructor(public rest: RestService) {}
 
   ngOnInit() {
+    this.getPeoples();
   }
+
+  getPeoples() {
+    this.peoples = [];
+    this.rest.getRequest('people/dependents').subscribe((data: {}) => {
+      this.peoples = data;
+    });
+  }
+
+  
 
 }

@@ -9,7 +9,7 @@ export const appRoutes: Routes = [
     component: PersonFormComponent 
   },
   { 
-    path: 'index',
+    path: 'pessoa',
     component: PersonIndexComponent
   }
 ];
