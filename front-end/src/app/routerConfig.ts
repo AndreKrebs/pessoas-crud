@@ -5,11 +5,15 @@ import { PersonFormComponent } from './components/person/form/form.component';
 
 export const appRoutes: Routes = [
   { 
-    path: 'pessoa/novo', 
+    path: 'pessoa/novo', // new
     component: PersonFormComponent 
   },
   { 
-    path: 'pessoa',
+    path: 'pessoa/:id', // edit
+    component: PersonFormComponent
+  },
+  { 
+    path: 'pessoa', 
     component: PersonIndexComponent
   }
 ];

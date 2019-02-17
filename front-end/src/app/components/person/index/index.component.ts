@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { RestService } from '../../../services/rest/rest.service'
-import { Observable, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-index',
@@ -14,7 +15,7 @@ export class PersonIndexComponent implements OnInit {
 
   peoples:any = [];
 
-  constructor(public rest: RestService) {}
+  constructor(public rest: RestService, private router: Router) {}
 
   ngOnInit() {
     this.getPeoples();
@@ -25,6 +26,10 @@ export class PersonIndexComponent implements OnInit {
     this.rest.getRequest('people/dependents').subscribe((data: {}) => {
       this.peoples = data;
     });
+  }
+
+  addNew() {
+    this.router.navigate(['/pessoa/novo']);
   }
 
   

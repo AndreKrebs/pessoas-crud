@@ -3,36 +3,37 @@
     {{ title }}
   </div>
   <div class="panel-body">
-    <form>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input type="hidden" class="form-control" formControlName="id" />
+
       <div class="form-group">
         <label class="col-md-4">Nome</label>
-        <input type="text" class="form-control" name="pessoa-nome" />
+        <input type="text" class="form-control" formControlName="name" />
       </div>
-
 
       <div class="form-group">
         <label class="col-md-4">E-mail</label>
-        <input type="text" class="form-control" name="pessoa-email" />
+        <input type="text" class="form-control" formControlName="email" />
       </div>
 
       <div class="form-group">
         <label class="col-md-4">Data nascimento</label>
-        <input type="date" class="form-control" name="pessoa-dt-nascimento" />
+        <input type="date" class="form-control" formControlName="dateBird" />
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label class="col-md-4">Dependente de:</label>
-        <select class="form-control" name="pessoa-dependente">
+        <select class="form-control" formControlName="peopleDependent">
           <option></option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <ng-container *ngFor="let people of peoples">
+            <option value="{{people.id}}">{{people.name}}</option>
+          </ng-container>
+
         </select>
-      </div>
+      </div> -->
+      
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Salvar</button>
       </div>
     </form>
   </div>

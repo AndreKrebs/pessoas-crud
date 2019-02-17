@@ -1,6 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    {{ title }}
+    <span>{{ title }}</span> 
+    <button type="button" (click)="addNew()" class="btn btn-success new-button-pull-right">Novo</button>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
