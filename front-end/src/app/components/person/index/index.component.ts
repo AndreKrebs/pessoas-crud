@@ -23,7 +23,7 @@ export class PersonIndexComponent implements OnInit {
 
   getPeoples() {
     this.peoples = [];
-    this.rest.getRequest('people/dependents').subscribe((data: {}) => {
+    this.rest.getRequest('people').subscribe((data: {}) => {
       this.peoples = data;
     });
   }
@@ -32,6 +32,8 @@ export class PersonIndexComponent implements OnInit {
     this.router.navigate(['/pessoa/novo']);
   }
 
-  
+  addNewDependent(idPeople: number) {
+    this.router.navigate(['/dependente/novo/'+idPeople]);
+  }
 
 }

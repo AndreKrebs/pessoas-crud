@@ -49,6 +49,11 @@ public class Dependent extends Person {
 	public void setDependentType(Integer dependentType) {
 		this.dependentType = dependentType;
 	}
+
+	@Override
+	public String toString() {
+		return "Dependent [people=" + people + ", dependentType=" + dependentType + "]";
+	}
 	
 	
 	

@@ -9,13 +9,15 @@ import { appRoutes } from './routerConfig'
 
 import { PersonIndexComponent } from './components/person/index/index.component';
 import { PersonFormComponent } from './components/person/form/form.component';
+import { DependentFormComponent } from './components/dependent/form/form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonIndexComponent,
-    PersonFormComponent
+    PersonFormComponent,
+    DependentFormComponent
   ],
   imports: [
     BrowserModule,

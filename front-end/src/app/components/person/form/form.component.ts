@@ -51,7 +51,6 @@ export class PersonFormComponent implements OnInit {
 
   submit() {    
     if(this.form.value.id > 0) {
-      console.log("IF", this.form.value);
       this.rest.putRequest('people', this.form.value).subscribe((data: {}) => {
         this.people = data;
         if(this.people.id>0) {
@@ -74,7 +73,6 @@ export class PersonFormComponent implements OnInit {
   getPeople(id: string) {
     this.rest.getRequest('people/'+id).subscribe((data: {}) => {
       this.people = data;
-      console.log(this.people.dateBird);
       this.people.dateBird[1] = this.formatDate(this.people.dateBird[1]);
       this.people.dateBird[2] = this.formatDate(this.people.dateBird[2]);
       this.fieldsForm(this.people.id, this.people.name, this.people.email, this.people.dateBird.join("-"));

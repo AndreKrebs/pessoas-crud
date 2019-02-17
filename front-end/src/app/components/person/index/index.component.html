@@ -17,15 +17,15 @@
           <tr >
             <td>{{people.name}}</td>
             <td>{{people.email}}</td>
-            <td></td>
+            <td><button type="button" (click)="addNewDependent(people.id)" class="btn btn-success">Novo Depend.</button></td>
           </tr>
-          <ng-container *ngIf="(people.categoryList.length > 0)">
+          <!-- <ng-container *ngIf="(people.categoryList.length > 0)">
               <tr *ngFor="let sub of people.categoryList">
                 <td>&nbsp;&nbsp;&nbsp;<b>&#8594;&nbsp;{{sub.name}}</b></td>
                 <td><b>{{sub.email}}</b></td>
                 <td></td>
               </tr>
-          </ng-container>
+          </ng-container> -->
         </ng-container>
         
       </tbody>

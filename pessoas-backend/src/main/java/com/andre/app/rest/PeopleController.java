@@ -30,7 +30,7 @@ public class PeopleController {
 	public ResponseEntity<List<People>> listPeople() {
 		
 		List<People> list = peopleService.listPeople();
-		
+		System.out.println(list.toString());
 		return ResponseEntity.ok().body(list);
 	}
 		
