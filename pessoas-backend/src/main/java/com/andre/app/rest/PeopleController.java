@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +38,7 @@ public class PeopleController {
 	public ResponseEntity<People> getPeople(@PathVariable("id") Integer idPeople) {
 		
 		People people = peopleService.getPeople(idPeople);
-		
+		System.out.println(people.toString());
 		return ResponseEntity.ok().body(people);
 	}
 	
@@ -47,6 +48,16 @@ public class PeopleController {
 		People obj = new People();
 		
 		obj = peopleService.newPeople(peopleObj);
+		
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	@PutMapping
+	public ResponseEntity<People> pustPeople(@Valid @RequestBody People peopleObj) throws Exception {
+		
+		People obj = new People();
+		
+		obj = peopleService.updatePeople(peopleObj);
 		
 		return ResponseEntity.ok().body(obj);
 	}

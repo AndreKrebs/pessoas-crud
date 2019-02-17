@@ -38,6 +38,14 @@ public class People extends Person {
 		this.dependents = dependents;
 	}
 
+	@Override
+	public String toString() {
+		return "People [dependents=" + dependents + ", id=" + id + ", name=" + name + ", email=" + email + ", dateBird="
+				+ dateBird + ", getDependents()=" + getDependents() + ", getId()=" + getId() + ", getName()="
+				+ getName() + ", getEmail()=" + getEmail() + ", getDateBird()=" + getDateBird() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
 	
 
 }

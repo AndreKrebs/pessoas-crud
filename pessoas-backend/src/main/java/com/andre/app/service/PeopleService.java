@@ -29,9 +29,16 @@ public class PeopleService {
 		
 		People people = new People(peopleNew);
 		
-		people = peopleRepository.save(people);
+		System.out.println(people.toString());
 		
-		return people;
+		People newPeople = peopleRepository.save(people);
+		
+		return newPeople;
+	}
+	
+	public People updatePeople(People peopleUpdate) {
+		
+		return peopleRepository.save(peopleUpdate);
 	}
 
 	public void deletePeople(Integer idPeople) {
