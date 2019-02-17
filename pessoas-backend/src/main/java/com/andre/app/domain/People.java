@@ -26,7 +26,7 @@ public class People extends Person {
 	public People(PeopleNewDto peopleNewDto) {
 		this.name = peopleNewDto.getName();
 		this.email = peopleNewDto.getEmail();
-		this.dateBird = peopleNewDto.getDateBird();
+		this.dateBirth = peopleNewDto.getDateBirth();
 	}
 	
 	
@@ -40,9 +40,9 @@ public class People extends Person {
 
 	@Override
 	public String toString() {
-		return "People [dependents=" + dependents + ", id=" + id + ", name=" + name + ", email=" + email + ", dateBird="
-				+ dateBird + ", getDependents()=" + getDependents() + ", getId()=" + getId() + ", getName()="
-				+ getName() + ", getEmail()=" + getEmail() + ", getDateBird()=" + getDateBird() + ", getClass()="
+		return "People [dependents=" + dependents + ", id=" + id + ", name=" + name + ", email=" + email + ", dateBirth="
+				+ dateBirth + ", getDependents()=" + getDependents() + ", getId()=" + getId() + ", getName()="
+				+ getName() + ", getEmail()=" + getEmail() + ", getDateBirth()=" + getDateBirth() + ", getClass()="
 				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 

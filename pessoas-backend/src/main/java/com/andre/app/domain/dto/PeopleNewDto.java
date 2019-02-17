@@ -15,7 +15,7 @@ public class PeopleNewDto {
 	private String email;
 	
 //	@NotEmpty(message = "Campo Data de Nascimento é obrigatório")
-	private LocalDate dateBird;
+	private LocalDate dateBirth;
 
 	
 	public PeopleNewDto() {
@@ -39,18 +39,18 @@ public class PeopleNewDto {
 		this.email = email;
 	}
 
-	public LocalDate getDateBird() {
-		return dateBird;
+	public LocalDate getDateBirth() {
+		return dateBirth;
 	}
 
-	public void setDateBird(LocalDate dateBird) {
-		this.dateBird = dateBird;
+	public void setDateBirth(LocalDate dateBirth) {
+		this.dateBirth = dateBirth;
 	}
 
 
 	@Override
 	public String toString() {
-		return "PeopleNewDto [name=" + name + ", email=" + email + ", dateBird=" + dateBird + "]";
+		return "PeopleNewDto [name=" + name + ", email=" + email + ", dateBirth=" + dateBirth + "]";
 	}
 	
 	

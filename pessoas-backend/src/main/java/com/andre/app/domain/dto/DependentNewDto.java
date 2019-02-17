@@ -17,12 +17,12 @@ public class DependentNewDto {
 	private String email;
 	
 //	@NotEmpty(message = "Campo Data de Nascimento é obrigatório")
-	private LocalDate dateBird;
+	private LocalDate dateBirth;
 	
 	@NotEmpty(message = "Campo Tipo de Dependente é obrigatório")
 	private Integer dependentType;
 	
-	@NotEmpty(message = "Campo Dependente é obrigatório")
+//	@NotEmpty(message = "Campo Dependente é obrigatório")
 	private People people;	
 
 	
@@ -47,12 +47,12 @@ public class DependentNewDto {
 		this.email = email;
 	}
 
-	public LocalDate getDateBird() {
-		return dateBird;
+	public LocalDate getDateBirth() {
+		return dateBirth;
 	}
 
-	public void setDateBird(LocalDate dateBird) {
-		this.dateBird = dateBird;
+	public void setDateBirth(LocalDate dateBirth) {
+		this.dateBirth = dateBirth;
 	}
 	
 	public Integer getDependentType() {
@@ -77,7 +77,7 @@ public class DependentNewDto {
 
 	@Override
 	public String toString() {
-		return "DependentNewDto [name=" + name + ", email=" + email + ", dateBird=" + dateBird + ", dependentType="
+		return "DependentNewDto [name=" + name + ", email=" + email + ", dateBirth=" + dateBirth + ", dependentType="
 				+ dependentType + ", people=" + people + "]";
 	}
 	

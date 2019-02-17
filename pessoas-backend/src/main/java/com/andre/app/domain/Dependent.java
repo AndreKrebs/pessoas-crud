@@ -28,7 +28,7 @@ public class Dependent extends Person {
 	public Dependent(DependentNewDto peopleNewDto) {
 		this.name = peopleNewDto.getName();
 		this.email = peopleNewDto.getEmail();
-		this.dateBird = peopleNewDto.getDateBird();
+		this.dateBirth = peopleNewDto.getDateBirth();
 		this.dependentType = peopleNewDto.getDependentType();
 		this.people = peopleNewDto.getPeople();
 	}

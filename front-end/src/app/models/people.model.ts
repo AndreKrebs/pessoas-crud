@@ -2,6 +2,6 @@ export class People {
     id: string = "";
     name: string = "";
     email: string = "";
-    dateBird: Date = null;
+    dateBirth: Date = null;
     peopleDependent: string = "";
   }

@@ -8,8 +8,18 @@
       
       <div class="form-group">
         <label class="col-md-4">Dependente De</label>
-        <input type="hidden" class="form-control" formControlName="dependent" />
-        <input type="text" disabled class="form-control" [value]="people.name" />
+        <input type="hidden" class="form-control" formControlName="people" />
+        <input type="text" disabled class="form-control" formControlName="peopleName" />
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Tipo de dependente</label>
+        <select class="form-control" formControlName="dependentType">
+          <option ></option>
+          <ng-container *ngFor="let dt of dependentType | keyvalue">
+            <option value="{{dt.key}}">{{dt.value}}</option>
+          </ng-container>
+        </select>
       </div>
       
       <div class="form-group">
@@ -24,7 +34,7 @@
 
       <div class="form-group">
         <label class="col-md-4">Data nascimento</label>
-        <input type="date" class="form-control" formControlName="dateBird" />
+        <input type="date" class="form-control" formControlName="dateBirth" />
       </div>
 
       

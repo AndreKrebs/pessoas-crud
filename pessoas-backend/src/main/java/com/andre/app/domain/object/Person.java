@@ -24,7 +24,7 @@ public class Person {
 	protected String email;
 	
 	@Column(nullable=false, columnDefinition = "DATE")
-	protected LocalDate dateBird;
+	protected LocalDate dateBirth;
 	
 	public Integer getId() {
 		return id;
@@ -51,12 +51,12 @@ public class Person {
 		this.email = email;
 	}
 
-	public LocalDate getDateBird() {
-		return dateBird;
+	public LocalDate getDateBirth() {
+		return dateBirth;
 	}
 
-	public void setDateBird(LocalDate dateBird) {
-		this.dateBird = dateBird;
+	public void setDateBirth(LocalDate dateBirth) {
+		this.dateBirth = dateBirth;
 	}
 	
 }

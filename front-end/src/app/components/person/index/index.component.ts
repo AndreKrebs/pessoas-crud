@@ -33,7 +33,7 @@ export class PersonIndexComponent implements OnInit {
   }
 
   addNewDependent(idPeople: number) {
-    this.router.navigate(['/dependente/novo/'+idPeople]);
+    this.router.navigate(['/dependente/'+idPeople]);
   }
 
 }

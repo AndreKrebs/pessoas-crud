@@ -1,10 +1,13 @@
 package com.andre.app.domain.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum DependentType {
 
-	ESPOSA(1, "Esposa"), 
+	ESPOSA(0, "Esposa"), 
 	FILHO(1, "Filho"), 
-	SECRETARIA(1, "Secretária");
+	SECRETARIA(2, "Secretária");
 
 	private int cod;
 	private String description;
@@ -37,6 +40,19 @@ public enum DependentType {
 
 		// se não foi encontrado, lança exception
 		throw new IllegalArgumentException("ID inválido: " + cod);
+
+	}
+	
+	public static Map<Integer, String> listEnumToMap() {
+
+		Map<Integer, String> lista = new HashMap<>();
+		
+		for (DependentType x : DependentType.values()) {
+			
+			lista.put(x.getCod(), x.getDescription());
+		}
+
+		return lista;
 
 	}
 

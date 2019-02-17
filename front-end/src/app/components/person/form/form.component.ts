@@ -34,7 +34,7 @@ export class PersonFormComponent implements OnInit {
         id: new FormControl(),
         name: new FormControl(),
         email: new FormControl(),
-        dateBird: new FormControl()
+        dateBirth: new FormControl()
      });
 
     }
@@ -73,18 +73,18 @@ export class PersonFormComponent implements OnInit {
   getPeople(id: string) {
     this.rest.getRequest('people/'+id).subscribe((data: {}) => {
       this.people = data;
-      this.people.dateBird[1] = this.formatDate(this.people.dateBird[1]);
-      this.people.dateBird[2] = this.formatDate(this.people.dateBird[2]);
-      this.fieldsForm(this.people.id, this.people.name, this.people.email, this.people.dateBird.join("-"));
+      this.people.dateBirth[1] = this.formatDate(this.people.dateBirth[1]);
+      this.people.dateBirth[2] = this.formatDate(this.people.dateBirth[2]);
+      this.fieldsForm(this.people.id, this.people.name, this.people.email, this.people.dateBirth.join("-"));
     });
   }
 
-  fieldsForm(id: string, name: string, email:string, dateBird: string) {
+  fieldsForm(id: string, name: string, email:string, dateBirth: string) {
     this.form = this.formBuilder.group({
       id: [id],
       name: [name],
       email: [email],
-      dateBird: [dateBird]
+      dateBirth: [dateBirth]
     });
   }
 

@@ -1,13 +1,13 @@
 package com.andre.app.rest;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,10 +29,8 @@ public class DependentController {
 	private DependentService dependentService;
 	
 	@GetMapping("/dependent-type")
-	public ResponseEntity<Collection<?>> getAllDependentType() {
-		Collection<?> dependentType = Collections.singletonList(DependentType.values());
-		
-		return ResponseEntity.ok().body(dependentType);
+	public ResponseEntity<Map<Integer, String>> getAllDependentType() {
+		return ResponseEntity.ok().body(DependentType.listEnumToMap());
 	}
 	
 	@GetMapping
@@ -55,8 +53,8 @@ public class DependentController {
 	public ResponseEntity<Dependent> postDependent(@Valid @RequestBody DependentNewDto dependentObj) throws Exception {
 		
 		Dependent obj = new Dependent();
-		
-		obj = dependentService.newDependent(dependentObj);
+		System.out.println(dependentObj);
+		//obj = dependentService.newDependent(dependentObj);
 		
 		return ResponseEntity.ok().body(obj);
 	}

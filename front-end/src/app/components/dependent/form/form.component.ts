@@ -18,22 +18,28 @@ export class DependentFormComponent implements OnInit {
 
   people: any;
   idPeople: number;
+  dependentType: any;
 
   title:string = "Cadastrar Pessoa Dependente";
   
 
   constructor(private rest: RestService, public formBuilder: FormBuilder, private router: Router, 
     private activatedRoute: ActivatedRoute) {
+      this.listDependentType();
+
       this.form = new FormGroup({
         id: new FormControl(),
         name: new FormControl(),
         email: new FormControl(),
-        dateBird: new FormControl(),
-        dependent: new FormControl()
+        dateBirth: new FormControl(),
+        peopleName: new FormControl(),
+        people: new FormControl(),
+        dependentType: new FormControl()
       });
 
+      this.fieldsForm("", "", "", "", "", new Object, 0);
+
       this.activatedRoute.params.subscribe(params => {
-        console.log(params)
         if(params['id'] && params['people']) {
           this.idDependent = params['id'];
           this.idPeople = params['people'];
@@ -48,60 +54,67 @@ export class DependentFormComponent implements OnInit {
     }
 
   ngOnInit() {
-    
     if(this.idDependent && this.idPeople) {
-      this.getDependent(this.idDependent);
+      // this.getDependent(this.idDependent);
     } else {
       this.getPeople(this.idPeople);
     }
 
   }
 
-  submit() {    
+  submit() { 
+    delete this.form.value['peopleName']; // não deve ser enviado, é usado apenas para o formulário
+    console.log("submit", this.form.value);
     if(this.form.value.id > 0) {
-      this.rest.putRequest('dependent', this.form.value).subscribe((data: {}) => {
+      /*this.rest.putRequest('dependent', this.form.value).subscribe((data: {}) => {
         this.dependent = data;
         if(this.dependent.id>0) {
           this.router.navigate(['/dependente/'+this.dependent.id]);
         }
         
-      });
+      });*/
     } else {
       this.rest.postRequest('dependent', this.form.value).subscribe((data: {}) => {
         this.dependent = data;
         if(this.dependent.id>0) {
-          this.router.navigate(['/dependente/'+this.dependent.id]);
+          console.log("uri", '/dependente/'+this.dependent.people.id+'/'+this.dependent.id);
+          // this.router.navigate(['/dependente/'+this.dependent.people.id+'/'+this.dependent.id]);
         }
         
       });
     }
   }
 
-  getDependent(id: number) {
-    this.rest.getRequest('dependent/'+id).subscribe((data: {}) => {
-      /*this.dependent = data;
-      this.dependent.dateBird[1] = this.formatDate(this.dependent.dateBird[1]);
-      this.dependent.dateBird[2] = this.formatDate(this.dependent.dateBird[2]);
-      this.fieldsForm(this.dependent.id, this.dependent.name, this.dependent.email, this.dependent.dateBird.join("-"));*/
-    });
-  }
-
   getPeople(idPeople: number) {
     this.rest.getRequest('people/'+idPeople).subscribe((data: {}) => {
-      console.log(">>>>>", data);
-      
       this.people = data;
-      this.fieldsForm("", "", "", "", this.people);
+
+      this.people.dateBirth[1] = this.formatDate(this.people.dateBirth[1]);
+      this.people.dateBirth[2] = this.formatDate(this.people.dateBirth[2]);
+      this.people.dateBirth = this.people.dateBirth.join("-");
+
+      this.fieldsForm("", "", "", "", this.people.name, this.people, 0);
     });
   }
 
-  fieldsForm(id: string, name: string, email:string, dateBird: string, dependent: any) {
+  fieldsForm(id: string, name: string, email:string, dateBirth: string, 
+    peopleName: string, people: Object, dependentType:number) {
+    
     this.form = this.formBuilder.group({
       id: [id],
       name: [name],
       email: [email],
-      dateBird: [dateBird],
-      dependent: [dependent]
+      dateBirth: [dateBirth],
+      peopleName: [peopleName],
+      people: [people],
+      dependentType: [dependentType]
+    });
+  }
+
+  listDependentType() {
+    
+    this.rest.getRequest('dependent/dependent-type').subscribe((data: {}) => {
+      this.dependentType = data;
     });
   }
 
