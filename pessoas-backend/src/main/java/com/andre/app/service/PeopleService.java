@@ -2,8 +2,6 @@ package com.andre.app.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +23,7 @@ public class PeopleService {
 		return peopleRepository.findById(idPeople).orElse(null);
 	}
 
-	public People newPeople(@Valid PeopleNewDto peopleNew) {
+	public People newPeople(PeopleNewDto peopleNew) {
 		
 		People people = new People(peopleNew);
 		

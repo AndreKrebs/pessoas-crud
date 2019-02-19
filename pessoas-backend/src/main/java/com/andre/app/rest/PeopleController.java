@@ -53,7 +53,7 @@ public class PeopleController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<People> pustPeople(@Valid @RequestBody People peopleObj) throws Exception {
+	public ResponseEntity<People> putPeople(@Valid @RequestBody People peopleObj) throws Exception {
 		
 		People obj = new People();
 		

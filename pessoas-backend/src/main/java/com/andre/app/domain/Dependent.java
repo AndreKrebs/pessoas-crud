@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import com.andre.app.domain.dto.DependentNewDto;
 import com.andre.app.domain.enums.DependentType;
 import com.andre.app.domain.object.Person;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="dependent")
@@ -25,15 +26,16 @@ public class Dependent extends Person {
 		super();
 	}
 	
-	public Dependent(DependentNewDto peopleNewDto) {
+	public Dependent(DependentNewDto peopleNewDto, People people) {
+		this.id = peopleNewDto.getId();
 		this.name = peopleNewDto.getName();
 		this.email = peopleNewDto.getEmail();
 		this.dateBirth = peopleNewDto.getDateBirth();
 		this.dependentType = peopleNewDto.getDependentType();
-		this.people = peopleNewDto.getPeople();
+		this.people = people;
 	}
 	
-//	@JsonIgnore
+	@JsonIgnore
 	public People getPeople() {
 		return people;
 	}
