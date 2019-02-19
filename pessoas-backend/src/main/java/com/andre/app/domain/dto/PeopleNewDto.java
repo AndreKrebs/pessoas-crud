@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
 
 public class PeopleNewDto {
 
@@ -14,7 +15,7 @@ public class PeopleNewDto {
 	@Email(message = "Campo não está no formato de e-mail")
 	private String email;
 	
-//	@NotEmpty(message = "Campo Data de Nascimento é obrigatório")
+	@Past(message="Data de nascimento não pode ser uma data futura")
 	private LocalDate dateBirth;
 
 	

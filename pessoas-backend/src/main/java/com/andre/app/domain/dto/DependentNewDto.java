@@ -3,7 +3,9 @@ package com.andre.app.domain.dto;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
 
 import com.andre.app.domain.Dependent;
 
@@ -18,13 +20,13 @@ public class DependentNewDto {
 	@Email(message = "Campo não está no formato de e-mail")
 	private String email;
 	
-//	@NotEmpty(message = "Campo Data de Nascimento é obrigatório")
+	@Past(message="Data de nascimento não pode ser uma data futura")
 	private LocalDate dateBirth;
 	
-//	@NotEmpty(message = "Campo Tipo de Dependente é obrigatório")
+	@Min(value=0, message = "Campo Tipo de Dependente é obrigatório")
 	private Integer dependentType;
 	
-//	@NotEmpty(message = "Campo Dependente é obrigatório")
+	@Min(value=1, message = "Campo Dependente é obrigatório")
 	private Integer peopleId;	
 
 	
