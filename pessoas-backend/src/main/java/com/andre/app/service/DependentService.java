@@ -28,7 +28,7 @@ public class DependentService {
 		return dependentRepository.findById(idDependent).orElse(null);
 	}
 
-	public Dependent newDependent(DependentNewDto dependentObj) throws Exception {
+	public DependentNewDto newDependent(DependentNewDto dependentObj) throws Exception {
 		People people = new People();
 		
 		if(dependentObj.getPeopleId() > 0) {
@@ -37,14 +37,14 @@ public class DependentService {
 			Dependent dependent = new Dependent(dependentObj, people);
 			
 			dependent = dependentRepository.save(dependent);
-		
-			return dependent;
+			
+			return new DependentNewDto(dependent);
 		}
 		
 		throw new Exception("Não foi informado o ID de Pessoa");
 	}
 	
-	public Dependent updateDependent(DependentNewDto dependentObj) throws Exception {
+	public DependentNewDto updateDependent(DependentNewDto dependentObj) throws Exception {
 		return newDependent(dependentObj);
 	}
 

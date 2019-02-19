@@ -50,21 +50,21 @@ public class DependentController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Dependent> postDependent(@Valid @RequestBody DependentNewDto dependentObj) 
+	public ResponseEntity<DependentNewDto> postDependent(@Valid @RequestBody DependentNewDto dependentObj) 
 			throws Exception {
 		
-		Dependent obj = new Dependent();
-		System.out.println(dependentObj);
+		DependentNewDto obj = new DependentNewDto();
+		
 		obj = dependentService.newDependent(dependentObj);
 		
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@PutMapping
-	public ResponseEntity<Dependent> putDependent(@Valid @RequestBody DependentNewDto dependentObj) 
+	public ResponseEntity<DependentNewDto> putDependent(@Valid @RequestBody DependentNewDto dependentObj) 
 			throws Exception {
 		
-		Dependent obj = dependentService.updateDependent(dependentObj);
+		DependentNewDto obj = dependentService.updateDependent(dependentObj);
 		
 		return ResponseEntity.ok().body(obj);
 	}

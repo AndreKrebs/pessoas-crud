@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import com.andre.app.domain.Dependent;
+
 public class DependentNewDto {
 
 	private Integer id;
@@ -30,6 +32,14 @@ public class DependentNewDto {
 		super();
 	}
 
+	public DependentNewDto(Dependent dependent) {
+		this.id = dependent.getId();
+		this.name = dependent.getName();
+		this.email = dependent.getEmail();
+		this.dateBirth = dependent.getDateBirth();
+		this.dependentType = dependent.getDependentType();
+		this.peopleId = dependent.getPeople().getId();
+	}
 	
 	public Integer getId() {
 		return id;

@@ -44,19 +44,13 @@ public class Dependent extends Person {
 		this.people = people;
 	}
 
-	public DependentType getDependentType() {
-		return DependentType.toEnum(this.dependentType);
+	public Integer getDependentType() {
+		return this.dependentType;
+//		return DependentType.toEnum(this.dependentType);
 	}
-
+	
 	public void setDependentType(Integer dependentType) {
 		this.dependentType = dependentType;
 	}
 
-	@Override
-	public String toString() {
-		return "Dependent [people=" + people + ", dependentType=" + dependentType + "]";
-	}
-	
-	
-	
 }
