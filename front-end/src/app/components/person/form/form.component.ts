@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { RestService } from '../../../services/rest/rest.service'
 
@@ -19,7 +19,9 @@ export class PersonFormComponent implements OnInit {
   title:string = "Cadastrar Pessoa";
   
 
-  constructor(private rest: RestService, public formBuilder: FormBuilder, private router: Router, 
+  constructor(private rest: RestService, 
+    private formBuilder: FormBuilder, 
+    private router: Router, 
     private activatedRoute: ActivatedRoute) {
 
       this.activatedRoute.params.subscribe(params => {
@@ -30,23 +32,14 @@ export class PersonFormComponent implements OnInit {
         }
       });
 
-      this.form = new FormGroup({
-        id: new FormControl(),
-        name: new FormControl(),
-        email: new FormControl(),
-        dateBirth: new FormControl()
-     });
-
     }
 
   ngOnInit() {
-    
+    this.fieldsForm("", "", "", "");
+
     if(this.idPeople) {
       this.getPeople(this.idPeople);
-    } else {
-      this.fieldsForm("", "", "", "");
     }
-
   }
 
   submit() {    

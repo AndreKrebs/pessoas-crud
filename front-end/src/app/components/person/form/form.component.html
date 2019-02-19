@@ -20,18 +20,7 @@
         <label class="col-md-4">Data nascimento</label>
         <input type="date" class="form-control" formControlName="dateBirth" />
       </div>
-
-      <!-- <div class="form-group">
-        <label class="col-md-4">Dependente de:</label>
-        <select class="form-control" formControlName="peopleDependent">
-          <option></option>
-          <ng-container *ngFor="let people of peoples">
-            <option value="{{people.id}}">{{people.name}}</option>
-          </ng-container>
-
-        </select>
-      </div> -->
-      
+    
       <div class="form-group">
         <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Salvar</button>
       </div>

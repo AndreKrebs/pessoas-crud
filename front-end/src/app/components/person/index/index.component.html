@@ -14,10 +14,13 @@
       </thead>
       <tbody>
         <ng-container *ngFor="let people of peoples">
-          <tr >
-            <td>{{people.name}}</td>
-            <td>{{people.email}}</td>
-            <td><button type="button" (click)="addNewDependent(people.id)" class="btn btn-success">Novo Depend.</button></td>
+          <tr class="item-list"  >
+            <td (click)="editPeople(people.id)">{{people.name}}</td>
+            <td (click)="editPeople(people.id)">{{people.email}}</td>
+            <td>
+              <button type="button" (click)="deletePeople(people.id, people.name)" class="btn btn-warning">Excluir</button>
+              <button type="button" (click)="addNewDependent(people.id)" class="btn btn-success">Novo Depend.</button>
+            </td>
           </tr>
           <!-- <ng-container *ngIf="(people.categoryList.length > 0)">
               <tr *ngFor="let sub of people.categoryList">

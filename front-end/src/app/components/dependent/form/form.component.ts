@@ -27,17 +27,7 @@ export class DependentFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
       this.listDependentType();
 
-      this.form = new FormGroup({
-        id: new FormControl(),
-        name: new FormControl(),
-        email: new FormControl(),
-        dateBirth: new FormControl(),
-        peopleName: new FormControl(),
-        people: new FormControl(),
-        dependentType: new FormControl()
-      });
-
-      this.fieldsForm("", "", "", "", "", new Object, 0);
+      this.fieldsForm(null, null, null, null, null, null, null);
 
       this.activatedRoute.params.subscribe(params => {
         if(params['id'] && params['people']) {
@@ -77,8 +67,7 @@ export class DependentFormComponent implements OnInit {
       this.rest.postRequest('dependent', this.form.value).subscribe((data: {}) => {
         this.dependent = data;
         if(this.dependent.id>0) {
-          console.log("uri", '/dependente/'+this.dependent.people.id+'/'+this.dependent.id);
-          // this.router.navigate(['/dependente/'+this.dependent.people.id+'/'+this.dependent.id]);
+          this.router.navigate(['/dependente/'+this.dependent.dependentType+'/'+this.dependent.id]);
         }
         
       });
@@ -93,12 +82,12 @@ export class DependentFormComponent implements OnInit {
       this.people.dateBirth[2] = this.formatDate(this.people.dateBirth[2]);
       this.people.dateBirth = this.people.dateBirth.join("-");
 
-      this.fieldsForm("", "", "", "", this.people.name, this.people, 0);
+      this.fieldsForm(null, null, null, null, this.people.name, this.people.id, null);
     });
   }
 
-  fieldsForm(id: string, name: string, email:string, dateBirth: string, 
-    peopleName: string, people: Object, dependentType:number) {
+  fieldsForm(id: number, name: string, email:string, dateBirth: string, 
+    peopleName: string, peopleId: Number, dependentType:number) {
     
     this.form = this.formBuilder.group({
       id: [id],
@@ -106,7 +95,7 @@ export class DependentFormComponent implements OnInit {
       email: [email],
       dateBirth: [dateBirth],
       peopleName: [peopleName],
-      people: [people],
+      peopleId: [peopleId],
       dependentType: [dependentType]
     });
   }

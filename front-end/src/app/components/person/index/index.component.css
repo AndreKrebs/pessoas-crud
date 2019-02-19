@@ -1,4 +1,12 @@
 .new-button-pull-right {
-    margin-top: -6px;
-    float: right !important;
-  }
+  margin-top: -6px;
+  float: right !important;
+}
+
+.item-list {
+  cursor: pointer;
+}
+
+.item-list:hover {
+  background-color: rgb(216, 216, 216);
+}

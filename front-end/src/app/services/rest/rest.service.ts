@@ -40,6 +40,10 @@ export class RestService {
     );
   }
 
+  deleteRequest(uri: String) {
+    return this.http.request('delete', endpoint+uri, {});
+  }
+
   putRequest(uri: String, obj: Object): Observable <any>  {
     
     return this.http.put<any>(endpoint + uri, JSON.stringify(obj), httpOptions).pipe(

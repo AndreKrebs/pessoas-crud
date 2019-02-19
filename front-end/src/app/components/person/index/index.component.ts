@@ -36,4 +36,17 @@ export class PersonIndexComponent implements OnInit {
     this.router.navigate(['/dependente/'+idPeople]);
   }
 
+  editPeople(idPeople: number) {
+    alert('editPeople');
+    this.router.navigate(['/pessoa/'+idPeople]);
+  }
+
+  deletePeople(idPeople: number, name: string) {
+    if(confirm("Deseja excluir o usuário " + name)) {
+      this.rest.deleteRequest('people/'+idPeople).subscribe( data => {
+        this.getPeoples();
+      });
+    }
+  }
+
 }
