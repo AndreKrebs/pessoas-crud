@@ -14,11 +14,19 @@ export class PersonIndexComponent implements OnInit {
   title:string = "Pessoas Cadastradas";
 
   peoples:any = [];
+  dependentTypes:any = [];
 
   constructor(public rest: RestService, private router: Router) {}
 
   ngOnInit() {
+    this.getDependentTypes();
     this.getPeoples();
+  }
+
+  getDependentTypes() {
+    this.rest.getRequest('dependent/dependent-type').subscribe((data: {}) => {
+      this.dependentTypes = data;
+    });
   }
 
   getPeoples() {
@@ -37,13 +45,24 @@ export class PersonIndexComponent implements OnInit {
   }
 
   editPeople(idPeople: number) {
-    alert('editPeople');
     this.router.navigate(['/pessoa/'+idPeople]);
+  }
+
+  editDependent(idPeople: number, idDependent: number) {
+    this.router.navigate(['/dependente/'+idPeople+'/'+idDependent]);
   }
 
   deletePeople(idPeople: number, name: string) {
     if(confirm("Deseja excluir o usuário " + name)) {
       this.rest.deleteRequest('people/'+idPeople).subscribe( data => {
+        this.getPeoples();
+      });
+    }
+  }
+
+  deleteDependent(idDependent: number, name: string) {
+    if(confirm("Deseja excluir o dependente " + name)) {
+      this.rest.deleteRequest('dependent/'+idDependent).subscribe( data => {
         this.getPeoples();
       });
     }

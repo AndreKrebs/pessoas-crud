@@ -67,7 +67,7 @@ export class DependentFormComponent implements OnInit {
       this.rest.postRequest('dependent', this.form.value).subscribe((data: {}) => {
         this.dependent = data;
         if(this.dependent.id>0) {
-          this.router.navigate(['/dependente/'+this.dependent.dependentType+'/'+this.dependent.id]);
+          this.router.navigate(['pessoa']);
         }
         
       });
