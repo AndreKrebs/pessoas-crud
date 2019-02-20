@@ -27,7 +27,7 @@ export class DependentFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
       this.listDependentType();
 
-      this.fieldsForm(null, null, null, null, null, null, null);
+      this.fieldsForm(null, null, null, null, null, null);
 
       this.activatedRoute.params.subscribe(params => {
         if(params['id'] && params['people']) {
@@ -45,30 +45,43 @@ export class DependentFormComponent implements OnInit {
 
   ngOnInit() {
     if(this.idDependent && this.idPeople) {
-      // this.getDependent(this.idDependent);
+      this.getDependent(this.idDependent);
     } else {
       this.getPeople(this.idPeople);
     }
+  }
 
+  getDependent(id: number) {
+    this.rest.getRequest('dependent/'+id).subscribe((data: {}) => {
+      this.dependent = data;
+      this.dependent.dateBirth[1] = this.formatDate(this.dependent.dateBirth[1]);
+      this.dependent.dateBirth[2] = this.formatDate(this.dependent.dateBirth[2]);
+      
+      this.fieldsForm(this.dependent.id, this.dependent.name, this.dependent.dateBirth.join("-"), 
+        this.dependent.peopleName, this.idPeople, this.dependent.dependentType)
+    });  
   }
 
   submit() { 
-    delete this.form.value['peopleName']; // não deve ser enviado, é usado apenas para o formulário
-    console.log("submit", this.form.value);
-    if(this.form.value.id > 0) {
-      /*this.rest.putRequest('dependent', this.form.value).subscribe((data: {}) => {
+    // peopleName não deve ser enviado, é usado apenas para o formulário
+    delete this.form.value['peopleName']; 
+    
+    if(this.idDependent && this.idPeople) {
+      this.rest.putRequest('dependent', this.form.value).subscribe((data: {}) => {
         this.dependent = data;
-        if(this.dependent.id>0) {
-          this.router.navigate(['/dependente/'+this.dependent.id]);
+        if(!this.dependent.id) {
+          alert("Ocorreu um erro");
         }
+        this.router.navigate(['pessoa']);
         
-      });*/
+      });
     } else {
       this.rest.postRequest('dependent', this.form.value).subscribe((data: {}) => {
         this.dependent = data;
-        if(this.dependent.id>0) {
-          this.router.navigate(['pessoa']);
+        if(!this.dependent.id) {
+          alert("Ocorreu um erro");
         }
+        this.router.navigate(['pessoa']);
         
       });
     }
@@ -77,22 +90,16 @@ export class DependentFormComponent implements OnInit {
   getPeople(idPeople: number) {
     this.rest.getRequest('people/'+idPeople).subscribe((data: {}) => {
       this.people = data;
-
-      this.people.dateBirth[1] = this.formatDate(this.people.dateBirth[1]);
-      this.people.dateBirth[2] = this.formatDate(this.people.dateBirth[2]);
-      this.people.dateBirth = this.people.dateBirth.join("-");
-
-      this.fieldsForm(null, null, null, null, this.people.name, this.people.id, null);
+      this.fieldsForm(null, null, null, this.people.name, this.people.id, null);
     });
   }
 
-  fieldsForm(id: number, name: string, email:string, dateBirth: string, 
+  fieldsForm(id: number, name: string, dateBirth: string, 
     peopleName: string, peopleId: Number, dependentType:number) {
     
     this.form = this.formBuilder.group({
       id: [id],
       name: [name],
-      email: [email],
       dateBirth: [dateBirth],
       peopleName: [peopleName],
       peopleId: [peopleId],

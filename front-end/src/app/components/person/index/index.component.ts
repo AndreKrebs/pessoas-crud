@@ -53,7 +53,7 @@ export class PersonIndexComponent implements OnInit {
   }
 
   deletePeople(idPeople: number, name: string) {
-    if(confirm("Deseja excluir o usuário " + name)) {
+    if(confirm("Deseja excluir o usuário " + name + " e todos os dependentes ?")) {
       this.rest.deleteRequest('people/'+idPeople).subscribe( data => {
         this.getPeoples();
       });
@@ -61,7 +61,7 @@ export class PersonIndexComponent implements OnInit {
   }
 
   deleteDependent(idDependent: number, name: string) {
-    if(confirm("Deseja excluir o dependente " + name)) {
+    if(confirm("Deseja excluir o dependente " + name+ " ?")) {
       this.rest.deleteRequest('dependent/'+idDependent).subscribe( data => {
         this.getPeoples();
       });

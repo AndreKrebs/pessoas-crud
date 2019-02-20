@@ -47,16 +47,21 @@ export class PersonFormComponent implements OnInit {
       this.rest.putRequest('people', this.form.value).subscribe((data: {}) => {
         this.people = data;
         if(this.people.id>0) {
-          this.router.navigate(['/pessoa/'+this.people.id]);
+          this.router.navigate(['pessoa']);
+        } else {
+          alert("Ocorreu um erro");
+          this.router.navigate(['pessoa']);
         }
         
       });
     } else {
-      console.log("ELSE");
       this.rest.postRequest('people', this.form.value).subscribe((data: {}) => {
         this.people = data;
         if(this.people.id>0) {
-          this.router.navigate(['/pessoa/'+this.people.id]);
+          this.router.navigate(['pessoa/'+this.people.id]);
+        } else {
+          alert("Ocorreu um erro");
+          this.router.navigate(['pessoa']);
         }
         
       });
