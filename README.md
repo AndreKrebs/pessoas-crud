@@ -14,3 +14,10 @@ O arquivo fica em **./database-mysql/crud-people-mysql**, basta executar o scrip
 
 ### MER do banco de dados
 O diagrama do MER do banco de dados esta em **./database-mysql/mer-pessoas-e-dependentes.png**
+
+## Back-end Spring Boot
+O sistema de back-end foi desenvolvido com a tecnologia Spring Boot, para compilar e executar o sistema é necessário ter instalado o **JDK da versão 8 do Java** e o **Maven**.
+Acesse a pasta **./pessoas-backend** pelo terminal, execute o comando `mvn clean package` para baixar as dependencias e gerar o arquivo **.war**, aguarde o processo de compilação e em seguida execute o comando `java -jar target/pessoas-backend-0.0.1-SNAPSHOT.war`(Caso não tenha o arquivo .war com esse nome é só executar o unico .war dentro da pasta!).
+Depois que o sistema iniciar ele estará disponivel no endereço **http://localhost:8080**.
+
+As configurações de conexão de banco de dados podem ser alteras no arquivo **/src/main/resources/application.properties**.
