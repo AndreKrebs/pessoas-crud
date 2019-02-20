@@ -21,3 +21,7 @@ Acesse a pasta **./pessoas-backend** pelo terminal, execute o comando `mvn clean
 Depois que o sistema iniciar ele estará disponivel no endereço **http://localhost:8080**.
 
 As configurações de conexão de banco de dados podem ser alteras no arquivo **/src/main/resources/application.properties**.
+
+## Front-end
+O sistema de front-end foi desenvolvido em Angular 6, para executar o sistema é necessário possuir o **NodeJs** versão 8 ou superior e o gerenciador de pacotes **npm** atualizado e o **angular/cli** instalado globalmente(`npm install -g @angular/cli`).
+Antes de iniciar o front-end é necessário instalar as dependencias com o comando `npm install` na raiz da pasta **./front-end**, depois de instaladas as dependencias é só iniciar o server do front com o comando `ng serve`
