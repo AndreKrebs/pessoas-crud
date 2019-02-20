@@ -24,4 +24,5 @@ As configurações de conexão de banco de dados podem ser alteras no arquivo **
 
 ## Front-end
 O sistema de front-end foi desenvolvido em Angular 6, para executar o sistema é necessário possuir o **NodeJs** versão 8 ou superior e o gerenciador de pacotes **npm** atualizado e o **angular/cli** instalado globalmente(`npm install -g @angular/cli`).
-Antes de iniciar o front-end é necessário instalar as dependências com o comando `npm install` na raiz da pasta **./front-end**, depois de instaladas as dependência é só iniciar o server do front com o comando `ng serve`
+Antes de iniciar o front-end é necessário instalar as dependências com o comando `npm install` na raiz da pasta **./front-end**, depois de instaladas as dependência é só iniciar o server do front com o comando `ng serve`.
+O sistema pode ser acessado em http://localhost:4200
