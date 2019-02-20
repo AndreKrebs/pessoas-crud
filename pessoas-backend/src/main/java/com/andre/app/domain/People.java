@@ -3,7 +3,6 @@ package com.andre.app.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,9 +17,7 @@ import com.andre.app.domain.object.Person;
 @Table(name="people")
 public class People extends Person {
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "people", 
-			cascade = CascadeType.ALL, orphanRemoval = true,
-			targetEntity=Dependent.class)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "people", targetEntity=Dependent.class)
 	private List<Dependent> dependents = new ArrayList<Dependent>();
 	
 	@Column(nullable=false, unique=true)

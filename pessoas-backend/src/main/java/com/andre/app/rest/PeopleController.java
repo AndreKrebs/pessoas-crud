@@ -54,17 +54,16 @@ public class PeopleController {
 	
 	@PutMapping
 	public ResponseEntity<People> putPeople(@Valid @RequestBody People peopleObj) throws Exception {
-		
+		System.out.println("putPeople");
 		People obj = new People();
-		
+		System.out.println("11111");
 		obj = peopleService.updatePeople(peopleObj);
-		
+		System.out.println("44444");
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deletePeople(@PathVariable("id") Integer idPeople) {
-		
 		peopleService.deletePeople(idPeople);
 		
 		return ResponseEntity.noContent().build();

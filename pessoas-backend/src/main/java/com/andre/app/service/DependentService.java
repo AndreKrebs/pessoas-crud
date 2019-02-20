@@ -58,7 +58,9 @@ public class DependentService {
 		dependentRepository.deleteById(idDependent);
 	}
 
-
+	public void deleteDependentByPeople(Integer idPeople) {
+		dependentRepository.deleteDependentByPeopleId(idPeople);
+	}
 	
 	
 }

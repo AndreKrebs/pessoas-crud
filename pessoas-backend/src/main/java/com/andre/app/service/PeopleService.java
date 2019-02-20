@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.andre.app.domain.People;
 import com.andre.app.domain.dto.PeopleNewDto;
+import com.andre.app.repository.DependentRepository;
 import com.andre.app.repository.PeopleRepository;
 
 @Service
@@ -14,6 +15,9 @@ public class PeopleService {
 
 	@Autowired
 	private PeopleRepository peopleRepository;
+	
+	@Autowired
+	private DependentService dependentService;
 
 	public List<People> listPeople() {
 		return peopleRepository.findAll();
@@ -35,11 +39,14 @@ public class PeopleService {
 	}
 	
 	public People updatePeople(People peopleUpdate) {
-		
+		System.out.println("333333");
 		return peopleRepository.save(peopleUpdate);
 	}
 
 	public void deletePeople(Integer idPeople) {
+		
+		dependentService.deleteDependentByPeople(idPeople);
+		
 		peopleRepository.deleteById(idPeople);
 	}
 	
