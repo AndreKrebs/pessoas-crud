@@ -1,2 +1,16 @@
-# pessoas-crud
-Projeto de estudo com as tecnologias Angular 6 a Spring Boot
+# CRUD DE PESSOAS (SPRING BOOT, ANGULAR e MYSQL)
+O Documento descreve como configurar os ambientes de front-end e back-end do sistema e também a configuração do banco de dados MySQL.
+
+## Banco de dados MySQL
+O projeto possui o código sql para criação da base de dados e das tabelas e também possui um arquivo docker-compose.yml caso o desenvolvedor deseje criar uma base de dados em um container Docker.
+
+### Docker Compose
+Para iniciar o container Docker é necessário ter instalado o Docker Compose.
+Com o Docker Compose instalado, basta acessar a pasta **./database-mysql/docker** pelo terminal e executar o comando `docker-compose up -d` e aguardar. Quando o container estiver rodando, o banco de dados podera ser acessado pelo endereço **localhost:3306** com usuário **root** e senha **12345**, esse container já inicia com a base de dados **crud-people-mysql**.
+
+### Arquivo .sql
+O arquivo sql serve tanto para executar em um banco de dados MySQL já configurado quanto para o MySQL do container Docker.
+O arquivo fica em **./database-mysql/crud-people-mysql**, basta executar o script no banco de dados, porem, se for executar no container Docker, a primeira linha deve ser removida.
+
+### MER do banco de dados
+O diagrama do MER do banco de dados esta em **./database-mysql/mer-pessoas-e-dependentes.png**
