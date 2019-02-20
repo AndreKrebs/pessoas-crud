@@ -25,7 +25,13 @@ public class DependentService {
 	}
 
 	public Dependent getDependent(Integer idDependent) {
-		return dependentRepository.findById(idDependent).orElse(null);
+//		People people = new People();
+//		Dependent dependent = 
+				return dependentRepository.findById(idDependent).orElse(null);
+		
+//		if (dependent.getId() > 0) {
+//			peopleRepository
+//		}
 	}
 
 	public DependentNewDto newDependent(DependentNewDto dependentObj) throws Exception {

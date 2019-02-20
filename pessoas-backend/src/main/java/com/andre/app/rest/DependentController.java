@@ -46,6 +46,8 @@ public class DependentController {
 		
 		Dependent dependent = dependentService.getDependent(idDependent);
 		
+//		DependentReturnDto
+		
 		return ResponseEntity.ok().body(dependent);
 	}
 	

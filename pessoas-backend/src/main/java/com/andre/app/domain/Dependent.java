@@ -7,7 +7,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.andre.app.domain.dto.DependentNewDto;
-import com.andre.app.domain.enums.DependentType;
 import com.andre.app.domain.object.Person;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,7 +28,6 @@ public class Dependent extends Person {
 	public Dependent(DependentNewDto peopleNewDto, People people) {
 		this.id = peopleNewDto.getId();
 		this.name = peopleNewDto.getName();
-		this.email = peopleNewDto.getEmail();
 		this.dateBirth = peopleNewDto.getDateBirth();
 		this.dependentType = peopleNewDto.getDependentType();
 		this.people = people;
@@ -39,6 +37,11 @@ public class Dependent extends Person {
 	public People getPeople() {
 		return people;
 	}
+	
+	public String getPeopleName() {
+		return people.getName();
+	}
+
 
 	public void setPeople(People people) {
 		this.people = people;

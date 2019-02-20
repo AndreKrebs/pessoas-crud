@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Email;
 
 @MappedSuperclass
 public class Person {
@@ -18,10 +17,6 @@ public class Person {
 	
 	@Column(nullable=false)
 	protected String name;
-	
-	@Column(nullable=false, unique=true)
-	@Email
-	protected String email;
 	
 	@Column(nullable=false, columnDefinition = "DATE")
 	protected LocalDate dateBirth;
@@ -41,14 +36,6 @@ public class Person {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public LocalDate getDateBirth() {
